@@ -1,2 +1,2 @@
 # WeeRent
-Collaborative Portfolio Project That Aims to Solve Accommodation Problem for Corps Members
+Collaborative Portfolio Project That Aims to Solve Accommodation Problems for Corps Members
