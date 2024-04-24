@@ -1,4 +1,4 @@
-from flask import render_template, url_for
+from flask import render_template, url_for, flash, redirect
 from weerent import app
 from weerent.forms import Register, Login
 
@@ -17,6 +17,10 @@ def about():
 def register():
     """Register page route."""
     form = Register()
+    if form.validate_on_submit():
+        print('here')
+        flash(f"Account created for {form.username.data} successfully!", 'success')
+        return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
