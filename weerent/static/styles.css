@@ -10,7 +10,8 @@ footer {
 
 
   body {
-    font-family: Calibri,"San Francisco", Arial, sans-serif;
+    font-family: "San Francisco", Arial, sans-serif;
+    font-weight: bold;
     font-size: 14px;
   }
 
