@@ -1,7 +1,8 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from weerent import app, db, bcrypt
 from weerent.forms import Register, Login
 from weerent.models import User, Accomodation, Image
+from flask_login import login_user, logout_user, current_user, login_required
 
 @app.route('/')
 @app.route('/home')
@@ -17,6 +18,8 @@ def about():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """Register page route."""
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = Register()
     if form.validate_on_submit():
         db.create_all()
@@ -34,7 +37,20 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Login page route."""
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = Login()
+    if form.validate_on_submit():
+        existing_user = User.query.filter_by(email=form.email.data).first()
+        if existing_user and bcrypt.check_password_hash(existing_user.password,
+                                                        form.password.data):
+            login_user(existing_user, form.remember.data)
+            next_page = request.args.get('next')
+            flash(f"Log in successful!", 'success')
+            return redirect(next_page) if next_page else redirect(url_for('home'))
+            flash(f"Log in successful!", 'success')
+        else:
+            flash(f"Log in failed! Please check your email and password.", 'danger')
     return render_template('login.html', title='Login', form=form)
 
 @app.route('/contact')
@@ -42,3 +58,14 @@ def contact():
     """Contact page route."""
     return render_template('contact.html', title='Contact Us')
 
+@app.route('/logout')
+def logout():
+    """Logout route."""
+    logout_user()
+    return redirect(url_for('home'))
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    """dashboard page route."""
+    return render_template('dashboard.html', title='Dashboard')

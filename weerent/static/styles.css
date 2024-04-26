@@ -9,11 +9,12 @@ footer {
 }
 
 
-  body {
+
+body {
     font-family: "San Francisco", Arial, sans-serif;
-    font-weight: bold;
+    font-weight: 800;
     font-size: 14px;
-  }
+}
 
 .logo {
     padding-left: 6%;
@@ -23,4 +24,7 @@ footer {
     margin-left: 50%;
 }
 
+.logout {
+    color: red;
+}
 
