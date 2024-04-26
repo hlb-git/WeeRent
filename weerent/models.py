@@ -1,5 +1,5 @@
 """User model module."""
-from weerent import db
+from weerent import db, app
 from weerent.superclass import Superclass
 
 
@@ -11,6 +11,8 @@ class User(Superclass, db.Model):
     email = db.Column(db.String(60), nullable=False, unique=True)
     password = db.Column(db.String(60), nullable=False)
     accomodations = db.relationship('Accomodation', backref='landlord', lazy=True)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def __repr__(self):
         return f"""
@@ -46,5 +48,6 @@ class Accomodation(Superclass, db.Model):
 class Image(Superclass, db.Model):
     """The Images class."""
     __tablename__ = 'images'
-    data = db.Column(db.Binary)
+    data = db.Column(db.String(60))
     accomodation_id = db.Column(db.String(60), db.ForeignKey('accomodations.id'), nullable=False)
+
