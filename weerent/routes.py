@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect
-from weerent import app
+from weerent import app, db, bcrypt
 from weerent.forms import Register, Login
+from weerent.models import User, Accomodation, Image
 
 @app.route('/')
 @app.route('/home')
@@ -18,9 +19,16 @@ def register():
     """Register page route."""
     form = Register()
     if form.validate_on_submit():
-        print('here')
-        flash(f"Account created for {form.username.data} successfully!", 'success')
-        return redirect(url_for('home'))
+        db.create_all()
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(firstname=form.firstname.data,
+                    lastname=form.lastname.data,
+                    email=form.email.data,
+                    password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash(f"Account created successfully! Please log in.", 'success')
+        return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])

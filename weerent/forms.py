@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
+from weerent.models import User
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 
 class Register(FlaskForm):
@@ -10,6 +11,11 @@ class Register(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirmPassword = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
+
+    def validate_email(self, email):
+        existingEmail = User.query.filter_by(email=email.data).first()
+        if existingEmail:
+            raise ValidationError('Email already exists!')
 
 class Login(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
