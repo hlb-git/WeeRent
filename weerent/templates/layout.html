@@ -26,7 +26,7 @@
                             <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
                         </li>
                         {% if current_user.is_authenticated %}
                             <li class="nav-item">
@@ -44,7 +44,7 @@
                             </li>
                         {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
+                            <a class="nav-link" href="{{ url_for('new') }}">Add Rent</a>
                         </li>
                     </ul>
                   </div>
@@ -52,11 +52,11 @@
             </nav>
         </section>
         <main role="main", class="container">
-            <div class="col-md-4">
+            <div>
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
-                            <div class="alert alert-{{ category }}">
+                            <div class="alert alert-{{ category }} col-md-4">
                                 {{ message }}
                             </div>
                         {% endfor %}

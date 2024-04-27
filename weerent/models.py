@@ -36,6 +36,7 @@ class Accomodation(Superclass, db.Model):
     __tablename__ = 'accomodations'
     state = db.Column(db.String(60), nullable=False)
     LGA = db.Column(db.String(60), nullable=False)
+    city = db.Column(db.String(60), nullable=False)
     address = db.Column(db.String(80), nullable=False)
     house_type = db.Column(db.String(60), nullable=False)
     details = db.Column(db.Text, nullable=False)
