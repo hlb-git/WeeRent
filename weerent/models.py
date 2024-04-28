@@ -1,9 +1,16 @@
 """User model module."""
 from weerent import db, app
 from weerent.superclass import Superclass
+from weerent import login_manager
+from flask_login import UserMixin
 
 
-class User(Superclass, db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    """Fetch user by user_id."""
+    return User.query.get(user_id)
+
+class User(Superclass, db.Model, UserMixin):
     """The User class."""
     __tablename__ = 'users'
     firstname = db.Column(db.String(60), nullable=False)
@@ -29,6 +36,7 @@ class Accomodation(Superclass, db.Model):
     __tablename__ = 'accomodations'
     state = db.Column(db.String(60), nullable=False)
     LGA = db.Column(db.String(60), nullable=False)
+    city = db.Column(db.String(60), nullable=False)
     address = db.Column(db.String(80), nullable=False)
     house_type = db.Column(db.String(60), nullable=False)
     details = db.Column(db.Text, nullable=False)
@@ -48,6 +56,6 @@ class Accomodation(Superclass, db.Model):
 class Image(Superclass, db.Model):
     """The Images class."""
     __tablename__ = 'images'
-    data = db.Column(db.String(60))
-    accomodation_id = db.Column(db.String(60), db.ForeignKey('accomodations.id'), nullable=False)
+    data = db.Column(db.LargeBinary,)
+    accomodation_id = db.Column(db.ForeignKey('accomodations.id'))
 

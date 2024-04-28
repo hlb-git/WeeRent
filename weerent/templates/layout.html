@@ -12,42 +12,53 @@
         {% endif %}
     </head>
     <body>
-        <section id="nav-bar">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="logo">
-                  <a class="navbar-brand" href="{{ url_for('home') }}">WeeRent</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('register') }}">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
-                        </li>
-                    </ul>
-                  </div>
-                </div>
-            </nav>
-        </section>
+        <header>
+            <section id="nav-bar">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="logo">
+                    <a class="navbar-brand" href="{{ url_for('home') }}">WeeRent</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                            </li>
+                            {% if current_user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link logout" href="{{ url_for('logout') }}">Logout</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('register') }}">Sign Up</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('new') }}">Add Rent</a>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </nav>
+            </section>
+        </header>
         <main role="main", class="container">
-            <div class="col-md-4">
+            <div class="jj2block pt-5 pb-5">
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
-                            <div class="alert alert-{{ category }}">
+                            <div class="alert alert-{{ category }} col-md-4">
                                 {{ message }}
                             </div>
                         {% endfor %}
