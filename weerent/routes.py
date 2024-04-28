@@ -19,7 +19,6 @@ def register():
         return redirect(url_for('home'))
     form = Register()
     if form.validate_on_submit():
-        db.create_all()
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(firstname=form.firstname.data,
                     lastname=form.lastname.data,
@@ -65,6 +64,10 @@ def new():
                                         landlord_id=current_user.id)
             db.session.add(accomodation)
             db.session.commit()
+            for image in form.image.data:
+                img = Image(data=image.filename, accomodation_id=accomodation.id)
+                db.session.add(img)
+                db.session.commit()
             flash(f"Rent added successfully!", 'success')
             return redirect(url_for('home'))
     else:
@@ -88,4 +91,3 @@ def logout():
 def dashboard():
     """dashboard page route."""
     return render_template('dashboard.html', title='Dashboard')
-

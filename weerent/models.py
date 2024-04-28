@@ -56,6 +56,6 @@ class Accomodation(Superclass, db.Model):
 class Image(Superclass, db.Model):
     """The Images class."""
     __tablename__ = 'images'
-    data = db.Column(db.String(60))
-    accomodation_id = db.Column(db.String(60), db.ForeignKey('accomodations.id'), nullable=False)
+    data = db.Column(db.LargeBinary,)
+    accomodation_id = db.Column(db.ForeignKey('accomodations.id'))
 

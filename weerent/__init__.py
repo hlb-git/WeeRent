@@ -5,10 +5,11 @@ from flask_login import LoginManager
 import requests
 
 
+
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.config['SECRET_KEY'] = 'fc8f3aa817427b9a83648d17332fab8484fc1f'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://test:weerentflask200@localhost/weerent'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
@@ -39,3 +40,4 @@ state_dropdown = [('(Select State)', '(Select State)')] + state_dropdown
 
 
 from weerent import routes
+

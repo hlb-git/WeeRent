@@ -1,19 +1,33 @@
-footer {
-    background-color: rgb(236, 236, 236);
+header {
+    position: sticky;
     height: 40px;
-    padding-top: 8px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
+    top: 0;
     width: 100%;
 }
-
 
 
 body {
     font-family: "San Francisco", Arial, sans-serif;
     font-weight: 800;
+    height: 100%;
     font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+
+footer {
+    background-color: rgb(236, 236, 236);
+    height: 40px;
+    padding-top: 8px;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.jj2block {
+    min-height: 100%;
 }
 
 .logo {
