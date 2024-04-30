@@ -1,33 +1,36 @@
 {% extends "layout.html" %}
 {% block content %}
+    <style>
+        h2 {
+            color: #6712f0;
+            font-weight: bold;
+        }
+    </style>
 
-    <div class="container">
-        <div >
-                <div class="col-md-6">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
                     <div class="card-body">
                         <div class="title">
                             <div class="border-bottom mb-4">
-                                <h4><b>{{ rent.house_type }} in {{ rent.city }}</b></h4>
+                                <h2 class="font-weight-bold text-uppercase">{{ rent.house_type }} in {{ rent.city }}</h2>
                             </div>
-                            <h6> <b>State:</b> {{rent.state}}</h6>
-                            <h6> <b>LGA:</b> {{rent.LGA}}</h6>
-                            <h6> <b>City:</b> {{rent.city}}</h6>
-                            <h6> <b>Address:</b> {{rent.address}}</h6>
-                            </br>
-                            </br>
-                            <h6> <b>Facility Details</b></h6>
+                            <p class="text-muted"> <b>State:</b> {{rent.state}}</p>
+                            <p class="text-muted"> <b>LGA:</b> {{rent.LGA}}</p>
+                            <p class="text-muted"> <b>City:</b> {{rent.city}}</p>
+                            <p class="text-muted"> <b>Address:</b> {{rent.address}}</p>
+                            <hr>
+                            <h5 class="font-weight-bold">Facility Details</h5>
                         </div>
-                            <div class="row mt-3 mb-3">
-                                {% for picture in pictures.data %}
-                                    <img src="data:{{picture.mimetype}};base64,{{picture.data}}",  alt="Image">
-                                {% endfor %}
-                                <p class="card-text">{{ rent.details }}</p>
-                            </div>
+                        <div class="row mt-3 mb-3">
+
+                            <p class="card-text mt-3">{{ rent.details }}</p>
                         </div>
-
-
                     </div>
                 </div>
+            </div>
         </div>
     </div>
+
 {% endblock content %}

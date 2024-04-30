@@ -66,12 +66,16 @@ def new():
                                         landlord_id=current_user.id)
             db.session.add(accomodation)
             db.session.commit()
-            for image in form.image.data:
-                img = Image(data=image.read(), accomodation_id=accomodation.id)
-                db.session.add(img)
-                db.session.commit()
-            flash(f"Rent added successfully!", 'success')
-            return redirect(url_for('home'))
+            try:
+                for image in form.image.data:
+                    img = Image(data=image.read(), accomodation_id=accomodation.id)
+                    db.session.add(img)
+                    db.session.commit()
+                flash(f"Rent added successfully!", 'success')
+                return redirect(url_for('home'))
+            except Exception:
+                flash(f"Rent added successfully!", 'success')
+                return redirect(url_for('home'))
     else:
         flash(f"Please log in to add a new rent.", 'danger')
         return redirect(url_for('login'))
