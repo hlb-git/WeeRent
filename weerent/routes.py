@@ -9,7 +9,9 @@ from flask_login import login_user, logout_user, current_user, login_required
 @app.route('/home')
 def home():
     """Home page route."""
-    return render_template('home.html')
+    rents = Accomodation.query.all()
+    pictures = Image.query.all()
+    return render_template('home.html', rents=rents, pictures=pictures)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -65,7 +67,7 @@ def new():
             db.session.add(accomodation)
             db.session.commit()
             for image in form.image.data:
-                img = Image(data=image.filename, accomodation_id=accomodation.id)
+                img = Image(data=image.read(), accomodation_id=accomodation.id)
                 db.session.add(img)
                 db.session.commit()
             flash(f"Rent added successfully!", 'success')
@@ -91,3 +93,11 @@ def logout():
 def dashboard():
     """dashboard page route."""
     return render_template('dashboard.html', title='Dashboard')
+
+@app.route('/accomodation/<accomodation_id>')
+def accomodation(accomodation_id):
+    """accomodation page route."""
+    rent = Accomodation.query.get_or_404(accomodation_id)
+    pictures = Image.query.filter_by(accomodation_id=accomodation_id).all()
+    return render_template('accomodation.html', title='Accomodation', rent=rent, pictures=pictures)
+

@@ -1,16 +1,32 @@
 header {
-    position: sticky;
     height: 40px;
     top: 0;
     width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: solid 2px #424242;
+    background-color: #fff;
 }
 
 
 body {
-    font-family: "San Francisco", Arial, sans-serif;
-    font-weight: 800;
-    height: 100%;
-    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f4f4f4;
+    color: #333;
+
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    background-color: #f4f4f4;
+    color: #333;
     margin: 0;
     padding: 0;
 }
@@ -42,3 +58,8 @@ footer {
     color: red;
 }
 
+.title-link {
+    color: #6600da;
+    font-size: 1.5em;
+    text-decoration: none;
+}

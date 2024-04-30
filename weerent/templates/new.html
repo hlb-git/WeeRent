@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="col-md-4">
-        <form method="POST" action="">
+    <div>
+        <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <fieldset>
                 <legend class="border-bottom mb-4">Add Rent Listing</legend>
@@ -100,7 +100,7 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        {{ form.image(class="form-control form-control-lg") }}
+                        {{ form.image(class="form-control-file") }}
                     {% endif %}
                 </div>
             </fieldset>
