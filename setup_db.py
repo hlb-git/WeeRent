@@ -1,13 +1,26 @@
 #!/usr/bin/python3
-from flask import Flask
+"""
+This script
+initializes the database
+and creates the needed tables
+"""
 from flask_sqlalchemy import SQLAlchemy
 from weerent.models import User, Accomodation, Image
+from weerent import db, app
 
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://test:weerentflask200@localhost/weerent'
-db = SQLAlchemy(app)
 
 
 with app.app_context():
     db.create_all()
+
+"""
+In addition to the above script, please run the commands below in your
+mysql server to create a user for sqlalchemy
+
+Commands:
+
+CREATE USER 'test'@'localhost' IDENTIFIED BY 'weerentflask200';
+GRANT ALL PRIVILEGES ON weerent.* TO 'test'@'localhost';
+
+
+"""

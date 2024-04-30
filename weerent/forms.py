@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from weerent import state_dropdown
 from weerent.models import User
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms import TextAreaField, SelectField, MultipleFileField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
+from flask_wtf.file import MultipleFileField, FileAllowed
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 
@@ -40,6 +40,6 @@ class New(FlaskForm):
                                               validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
     details = TextAreaField('Rent Details (e.g Facilities)', validators=[DataRequired()])
-    image = MultipleFileField('Upload Images')
+    image = MultipleFileField('Upload Images', validators=[FileAllowed(['jpg', 'png'])])
 
     submit = SubmitField('Add Rent')
