@@ -3,15 +3,17 @@ from weerent import app, db, bcrypt
 from weerent.forms import Register, Login, New
 from weerent.models import User, Accomodation, Image
 from flask_login import login_user, logout_user, current_user, login_required
+from flask import send_file
+from io import BytesIO
 
 
 @app.route('/')
 @app.route('/home')
 def home():
     """Home page route."""
-    rents = Accomodation.query.all()
-    pictures = Image.query.all()
-    return render_template('home.html', rents=rents, pictures=pictures)
+    page = request.args.get('page', 1, type=int)
+    rents = Accomodation.query.order_by(Accomodation.created_at.desc()).paginate(page=page, per_page=6)
+    return render_template('home.html', rents=rents)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -105,3 +107,7 @@ def accomodation(accomodation_id):
     pictures = Image.query.filter_by(accomodation_id=accomodation_id).all()
     return render_template('accomodation.html', title='Accomodation', rent=rent, pictures=pictures)
 
+@app.route('/image/<image_id>')
+def serve_image(image_id):
+    image = Image.query.get(image_id)
+    return send_file(BytesIO(image.data), mimetype='image/jpeg')

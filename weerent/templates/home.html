@@ -5,7 +5,6 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 2em;
             font-family: Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
         }
         .card {
@@ -19,7 +18,7 @@
             border-radius: 10px;
         }
         .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px 0 rgb(154, 102, 221);
         }
         .container .card .card-body {
             display: flex;
@@ -58,18 +57,71 @@
             border-radius: 7px;
         }
         .card-body .btn:hover {
-            background-color: #ff3c00;
+            background-color: #00da86;
+        }
+
+        .notcurentpage {
+            border-color: #0dff8e;
+            font-weight: bold;
+            color: #ffffff;
+            margin-right: 5px;
+            background-color: #0dff8e;
+        }
+        .notcurentpage:hover {
+            background-color: #6b00b3;
+            margin-right: 5px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .current {
+            background-color: #6b00b3;
+            color: #fff;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .current:hover {
+            background-color: #6b00b3;
+            color: #fff;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .welcome-text {
+            padding-left: 7.5%;
+            padding-bottom: 60px;
+            font-family: Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        }
+        .welcome-text h1 {
+            font-weight: bold;
+            color: #333;
+        }
+        .welcome-text h4 {
+            color: #777;
+            font-weight: bold;
         }
     </style>
+    <div class="container welcome-text row">
+        <div>
+            <h1>
+                Welcome to WeeRent!
+            </h1>
+        </div>
+        <div>
+            <h4>
+                Accomodation solution for Nigerian corps members.
+            </h4>
+        </div>
+
+    </div>
     <div class="container">
-        {% for place in rents %}
+        {% for place in rents.items %}
             <div class="card">
                 <div class="card-body">
                     <div class="title">
                         <h4><a href="{{ url_for('accomodation', accomodation_id=place.id) }}">{{ place.house_type }} in {{ place.city }}</a></h4>
                     </div>
                     <div>
-                        <p><b>{{place.state}} State</b></p>
+                        <p><b>{{place.LGA}}, {{place.state}} State</b></p>
                     </div>
 
                     <p>{{ place.details }}</p>
@@ -77,5 +129,19 @@
                 </div>
             </div>
         {% endfor %}
+        <div class="container">
+            {% for  page in rents.iter_pages() %}
+            {% if page %}
+                {% if page != rents.page %}
+                    <a class="btn notcurentpage mr-2 btn-outline-info" href="{{ url_for('home', page=page) }}">{{ page }}</a>
+                {% else %}
+                    <b><a class="btn current"> {{ page }}</a></b>
+                {% endif %}
+            {% else %}
+                ...
+            {% endif %}
+        {% endfor %}
+        </div>
+
     </div>
 {% endblock content %}

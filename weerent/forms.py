@@ -40,6 +40,6 @@ class New(FlaskForm):
                                               validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
     details = TextAreaField('Rent Details (e.g Facilities)', validators=[DataRequired()])
-    image = MultipleFileField('Upload Images', validators=[FileAllowed(['jpg', 'png'])])
+    image = MultipleFileField('Upload Images', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'])])
 
     submit = SubmitField('Add Rent')
