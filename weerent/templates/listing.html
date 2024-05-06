@@ -5,7 +5,6 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            font-family: Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
         }
         .card {
             display: flex;
@@ -18,7 +17,7 @@
             border-radius: 10px;
         }
         .card:hover {
-            box-shadow: 0 8px 16px 0 rgb(154, 102, 221);
+            box-shadow: 0 8px 16px 0 #333333ab;
         }
         .container .card .card-body {
             display: flex;
@@ -29,12 +28,12 @@
         }
         .card-body .title h4 {
             margin: 0;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-weight: 700;
+            text-transform: capitalize;
         }
         .card-body .title a {
             text-decoration: none;
-            color: black;
+            color: #003049;
         }
         .card-body p {
             color: #777;
@@ -51,53 +50,62 @@
             display: inline-block;
             margin-top: 1em;
             padding: 0.5em 1em;
-            background-color: #6b00b3;
+            background-color: #003049;
             color: white;
+            font-weight: 500;
             text-decoration: none;
             border-radius: 7px;
+            font-size: 1.1em;
         }
         .card-body .btn:hover {
-            background-color: #00da86;
+            color: #F77F00;
+            font-weight: 700;
         }
 
         .notcurentpage {
-            border-color: #0dff8e;
+            border-color: #003049;
             font-weight: bold;
-            color: #ffffff;
+            color: #003049;
             margin-right: 5px;
-            background-color: #0dff8e;
+            background-color: #f1f1f1;
         }
         .notcurentpage:hover {
-            background-color: #6b00b3;
+            background-color: #003049;
             margin-right: 5px;
             font-weight: bold;
             color: white;
+            border-color: #003049;
         }
 
         .current {
-            background-color: #6b00b3;
+            background-color: #003049;
             color: #fff;
             font-weight: bold;
             margin-right: 5px;
         }
         .current:hover {
-            background-color: #6b00b3;
-            color: #fff;
+            background-color: #f1f1f1;
+            color: #003049;
             font-weight: bold;
             margin-right: 5px;
+            border-color: #003049;
         }
         .welcome-text {
             padding-left: 7.5%;
             padding-bottom: 60px;
-            font-family: Arial, sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
         }
         .welcome-text h1 {
             font-weight: bold;
-            color: #333;
+            color: #003049;
         }
         .welcome-text h4 {
-            color: #777;
-            font-weight: bold;
+            color: #003049;
+            font-weight: 700;
+            font-family: 'SF Pro Display';
+        }
+
+        .pagination {
+            margin-top: 40px;
         }
     </style>
     <div class="container welcome-text row">
@@ -108,7 +116,7 @@
         </div>
         <div>
             <h4>
-                Accomodation solution for Nigerian corps members.
+                Accomodation directory for Nigerian corps members.
             </h4>
         </div>
 
@@ -118,10 +126,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="title">
-                        <h4><a href="{{ url_for('accomodation', accomodation_id=place.id) }}">{{ place.house_type }} in {{ place.city }}</a></h4>
+                        <h4><a href="{{ url_for('accomodation', accomodation_id=place.id) }}">{{ place.house_type }}</a></h4>
                     </div>
                     <div>
-                        <p><b>{{place.LGA}}, {{place.state}} State</b></p>
+                        <p><b>{{place.city}}, {{place.LGA}}, {{place.state}} State</b></p>
                     </div>
 
                     <p>{{ place.details }}</p>
@@ -129,11 +137,11 @@
                 </div>
             </div>
         {% endfor %}
-        <div class="container">
+        <div class="container pagination">
             {% for  page in rents.iter_pages() %}
             {% if page %}
                 {% if page != rents.page %}
-                    <a class="btn notcurentpage mr-2 btn-outline-info" href="{{ url_for('home', page=page) }}">{{ page }}</a>
+                    <a class="btn notcurentpage mr-2 btn-outline-info" href="{{ url_for('listings', page=page) }}">{{ page }}</a>
                 {% else %}
                     <b><a class="btn current"> {{ page }}</a></b>
                 {% endif %}

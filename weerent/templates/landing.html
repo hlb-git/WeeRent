@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeeRent: Accommodation for Nigerian Corps Members</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='landing.css')}}">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>WeeRent</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Listings</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to WeeRent</h2>
+            <p>Find the perfect accommodation during your service year</p>
+            <a href="{{url_for('listings')}}" class="btn">Browse Listings</a>
+        </div>
+    </section>
+    <section id="why-choose">
+        <div class="container">
+            <h2>Why Choose WeeRent?</h2>
+            <div class="grid">
+                <div class="feature">
+                    <h3>Tailored Listings</h3>
+                    <p>Browse through a curated selection of accommodation options specifically chosen to meet the needs of corps members.</p>
+                </div>
+                <div class="feature">
+                    <h3>Verified Properties</h3>
+                    <p>Rest assured knowing that all listings are thoroughly vetted for safety, comfort, and affordability.</p>
+                </div>
+                <div class="feature">
+                    <h3>Easy Search</h3>
+                    <p>Find your ideal accommodation quickly with our intuitive search filters, including location, price range, and amenities.</p>
+                </div>
+                <div class="feature">
+                    <h3>Community Reviews</h3>
+                    <p>Hear from fellow corps members about their experiences with different properties through authentic reviews and ratings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="accommodation-options">
+        <div class="container">
+            <h2>Accommodation Options</h2>
+            <div class="carousel">
+                <!-- Image Carousel: Add images of accommodation options -->
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Listings</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2024 WeeRent. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

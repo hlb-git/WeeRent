@@ -7,13 +7,20 @@ from flask import send_file
 from io import BytesIO
 
 
+
+
 @app.route('/')
 @app.route('/home')
 def home():
     """Home page route."""
+    return render_template('landing.html')
+
+@app.route('/listings')
+def listings():
+    """listings page route."""
     page = request.args.get('page', 1, type=int)
     rents = Accomodation.query.order_by(Accomodation.created_at.desc()).paginate(page=page, per_page=6)
-    return render_template('home.html', rents=rents)
+    return render_template('listing.html', rents=rents, title='Listings')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -77,7 +84,7 @@ def new():
                 return redirect(url_for('home'))
             except Exception:
                 flash(f"Rent added successfully!", 'success')
-                return redirect(url_for('home'))
+                return redirect(url_for('listings'))
     else:
         flash(f"Please log in to add a new rent.", 'danger')
         return redirect(url_for('login'))
