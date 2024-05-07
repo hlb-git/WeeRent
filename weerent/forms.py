@@ -40,6 +40,17 @@ class New(FlaskForm):
                                               validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
     details = TextAreaField('Rent Details (e.g Facilities)', validators=[DataRequired()])
-    image = MultipleFileField('Upload Images', validators=[FileAllowed(['jpg', 'png'])])
+    image = MultipleFileField('Upload Images', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'])])
 
     submit = SubmitField('Add Rent')
+
+class Filter(FlaskForm):
+    state = SelectField('State', choices=state_dropdown)
+    city = StringField('City/ Town', render_kw={"placeholder": "Enter City"})
+    type = SelectField('Rent Type', choices=[('', '(Select Rent Type)'),
+                                              ('Single Room', 'Single Room'),
+                                              ('Self Contain', 'Self Contain'),
+                                              ('Flat', 'Flat'),
+                                              ('Duplex', 'Duplex')])
+    submit = SubmitField('Filter')
+

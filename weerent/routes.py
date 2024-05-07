@@ -1,17 +1,36 @@
 from flask import render_template, url_for, flash, redirect, request
 from weerent import app, db, bcrypt
-from weerent.forms import Register, Login, New
+from weerent.forms import Register, Login, New, Filter
 from weerent.models import User, Accomodation, Image
 from flask_login import login_user, logout_user, current_user, login_required
+from flask import send_file
+from io import BytesIO
 
 
 @app.route('/')
 @app.route('/home')
 def home():
     """Home page route."""
-    rents = Accomodation.query.all()
-    pictures = Image.query.all()
-    return render_template('home.html', rents=rents, pictures=pictures)
+    return render_template('landing.html')
+
+@app.route('/listings', methods=['GET', 'POST'])
+def listings():
+    """listings page route."""
+    form = Filter()
+    page = request.args.get('page', 1, type=int)
+    query = Accomodation.query
+    if form.validate_on_submit():
+
+        if form.state.data != '':
+            query = query.filter_by(state=form.state.data)
+        if form.city.data != '':
+            query = query.filter_by(city=form.city.data)
+        if form.type.data != '':
+            query = query.filter_by(house_type=form.type.data)
+        rents = query.order_by(Accomodation.created_at.desc()).paginate(page=page, per_page=6)
+        return render_template('listing.html', rents=rents, title='Listings', form=form)
+    rents = Accomodation.query.order_by(Accomodation.created_at.desc()).paginate(page=page, per_page=6)
+    return render_template('listing.html', rents=rents, title='Listings', form=form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -45,7 +64,7 @@ def login():
             login_user(existing_user, form.remember.data)
             next_page = request.args.get('next')
             flash(f"Log in successful!", 'success')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            return redirect(next_page) if next_page else redirect(url_for('listings'))
         else:
             flash(f"Log in failed! Please recheck email and password.", 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -72,10 +91,10 @@ def new():
                     db.session.add(img)
                     db.session.commit()
                 flash(f"Rent added successfully!", 'success')
-                return redirect(url_for('home'))
+                return redirect(url_for('listings'))
             except Exception:
                 flash(f"Rent added successfully!", 'success')
-                return redirect(url_for('home'))
+                return redirect(url_for('listings'))
     else:
         flash(f"Please log in to add a new rent.", 'danger')
         return redirect(url_for('login'))
@@ -105,3 +124,7 @@ def accomodation(accomodation_id):
     pictures = Image.query.filter_by(accomodation_id=accomodation_id).all()
     return render_template('accomodation.html', title='Accomodation', rent=rent, pictures=pictures)
 
+@app.route('/image/<image_id>')
+def serve_image(image_id):
+    image = Image.query.get(image_id)
+    return send_file(BytesIO(image.data), mimetype='image/jpeg')
