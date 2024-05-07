@@ -9,7 +9,7 @@
         .card {
             display: flex;
             flex-direction: column;
-            width: 300px;
+            width: 315px;
             max-height: 300px;
             margin: 1em;
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -17,7 +17,7 @@
             border-radius: 10px;
         }
         .card:hover {
-            box-shadow: 0 8px 16px 0 #333333ab;
+            box-shadow: 0 8px 16px 0 #33333380;
         }
         .container .card .card-body {
             display: flex;
@@ -51,14 +51,14 @@
             margin-top: 1em;
             padding: 0.5em 1em;
             background-color: #003049;
-            color: white;
-            font-weight: 500;
+            color: #F77F00;
+            font-weight: 700;
             text-decoration: none;
             border-radius: 7px;
             font-size: 1.1em;
         }
         .card-body .btn:hover {
-            color: #F77F00;
+            color: #fff;
             font-weight: 700;
         }
 
@@ -79,7 +79,7 @@
 
         .current {
             background-color: #003049;
-            color: #fff;
+            color: #f77f00;
             font-weight: bold;
             margin-right: 5px;
         }
@@ -92,7 +92,7 @@
         }
         .welcome-text {
             padding-left: 7.5%;
-            padding-bottom: 60px;
+            padding-bottom: 20px;
         }
         .welcome-text h1 {
             font-weight: bold;
@@ -103,9 +103,41 @@
             font-weight: 700;
             font-family: 'SF Pro Display';
         }
+        .filter-container h5 {
+            color: #f77f00;
+            font-weight: 800;
+            font-family: 'SF Pro Display';
+        }
 
         .pagination {
             margin-top: 40px;
+        }
+        .filters {
+            display: flex;
+            gap: 20px;
+        }
+        .filter-button:hover  {
+            background-color: #f1f1f1;
+            color: #003049;
+            font-weight: 700;
+            border-radius: 7px;
+            padding: 0.4em 1em;
+        }
+        .filter-button {
+            background-color: #f77f00;
+            color: #003049;
+            font-weight: 700;
+            border-radius: 7px;
+            padding: 0.4em 1em;
+        }
+        .filter-container{
+            background-color: #003049;
+            border-radius: 15px;
+            margin-top: 60px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: left;
+            display: flex;
         }
     </style>
     <div class="container welcome-text row">
@@ -119,7 +151,29 @@
                 Accomodation directory for Nigerian corps members.
             </h4>
         </div>
-
+        <div class="container col-md-10 filter-container">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset>
+                <h5 >Filters</h5>
+                </br>
+                <div class="filters">
+                    <div>
+                        {{ form.state(class="form-control") }}
+                    </div>
+                    <div>
+                        {{ form.city(class="form-control") }}
+                    </div>
+                    <div>
+                        {{ form.type(class="form-control") }}
+                    </div>
+                    <div>
+                        {{ form.submit(class="btn filter-button") }}
+                    </div>
+                </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
     <div class="container">
         {% for place in rents.items %}

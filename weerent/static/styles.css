@@ -29,7 +29,7 @@ header {
 
 @font-face {
     font-family: 'SF Pro Display';
-    src: url('SanFranciscoFont/SanFranciscoDisplay-SemiBold.otf') format('opentype');
+    src: url('SanFranciscoFont/SanFranciscoDisplay-Semibold.otf') format('opentype');
     font-weight: 600;
 }
 
@@ -78,6 +78,8 @@ footer {
     bottom: 0;
     width: 100%;
     position: fixed;
+    color: #003049;
+    font-weight: 700;
 }
 
 
@@ -86,6 +88,16 @@ footer {
 }
 
 .logo {
+    padding-left: 6%;
+}
+
+.logotext {
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 25px;
+}
+.logo:hover {
     padding-left: 6%;
 }
 
