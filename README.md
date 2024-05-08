@@ -2,7 +2,8 @@
 Collaborative Portfolio Project That Aims to Solve Accommodation Problems for Corps Members
 
 Getting Started
-run ./dependencies.sh
+run ./dependencies.sh // for linux users
+run ./mac_dep.sh // for mac users
 
 """
 In addition to the above dependencies script, please run the commands below in your
