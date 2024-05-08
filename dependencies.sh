@@ -1,9 +1,9 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-pip install flask
-pip install flask-wtf
-pip install flask-sqlalchemy
-pip install flask-bcrypt
-pip install email-validator
-pip install flask-login
-pip install requests
+pip3 install Flask
+pip3 install flask-wtf
+pip3 install flask-sqlalchemy
+pip3 install flask-bcrypt
+pip3 install email-validator
+pip3 install flask-login
+pip3 install requests
