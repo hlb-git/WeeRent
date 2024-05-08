@@ -106,7 +106,36 @@ footer {
 }
 
 #logout {
-    color: red;
+    border-radius: 5px;
+    color: #003049;
+    padding-top: 2px;
+    padding-bottom: 2px ;
+    background-color: #F77F00;
+    margin-top: 5px;
+}
+#logout:hover {
+    border-radius: 5px;
+    color: #003049;
+    padding-top: 2px;
+    padding-bottom: 2px ;
+    background-color: #fff;
+    margin-top: 5px;
+}
+#login {
+    border-radius: 5px;
+    color: #003049;
+    padding-top: 2px;
+    padding-bottom: 2px ;
+    background-color: #F77F00;
+    margin-top: 5px;
+}
+#login:hover {
+    border-radius: 5px;
+    color: #003049;
+    padding-top: 2px;
+    padding-bottom: 2px ;
+    background-color: #fff;
+    margin-top: 5px;
 }
 
 .title-link {
@@ -125,4 +154,21 @@ h1 {
 
 .nav-link, .navbar-brand {
     color: #fff;
+}
+
+.navbar-light .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background-color: #f1f1f1; /* Change this to your preferred color */
+        padding-left: 10px;
+    }
+}
+@media (max-width: 992px) {
+    .navbar-light .navbar-nav .nav-link {
+        color: #003049;
+        font-family: 'SF Pro Display';
+    }
 }
