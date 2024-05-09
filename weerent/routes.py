@@ -79,7 +79,7 @@ def new():
             accomodation = Accomodation(state=form.state.data,
                                         LGA=form.lga.data,
                                         city=form.city.data,
-                                        address=form.city.data,
+                                        address=form.address.data,
                                         house_type=form.type.data,
                                         details=form.details.data,
                                         landlord_id=current_user.id)
