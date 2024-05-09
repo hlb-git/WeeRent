@@ -34,118 +34,180 @@
     src: url('SanFranciscoFont/SanFranciscoDisplay-Black.otf') format('opentype');
     font-weight: 900;
 }
-
-
-
-
-body, h1, h2, h3, p, ul, li {
+body {
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  div,
+  h1,
+  h2,
+  h3,
+  p {
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: 'SF Pro Display' ;
-    line-height: 1.6;
-}
-
-.container {
-    width: 80%;
+  }
+  
+  .head-img {
+    background: url(../Image/block.png);
+    background-position: fixed;
+    background-repeat: no-repeat;
+  
+    height: 200px;
+    width: 350px;
+    border-radius: 15px;
+    margin: 1rem auto;
+  }
+  
+  .header {
+    font-size: 20px;
+  }
+  .head-alt {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hd-arlt {
+    margin: 20px;
+    width: 20rem;
+    font-size: 15px;
+  }
+  .head-btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-size: 12px;
+  }
+  .body-hd {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+  }
+  .header-bd {
+    font-size: 20px;
+    padding: 10px;
+  }
+  .body-alt {
     margin: 0 auto;
-    max-width: 1200px;
     padding: 20px;
-}
-
-/* Header Styles */
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-}
-
-header nav ul {
-    list-style: none;
-}
-
-header nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Hero Section Styles */
-#hero {
-    background-color: #f4f4f4;
     text-align: center;
-    padding: 50px 0;
-}
-
-#hero h2 {
-    color: #333;
-    font-size: 2.5rem;
-}
-
-#hero p {
-    color: #666;
-    font-size: 1.1rem;
+    width: 10rem;
+  }
+  .body-heading {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .hd-bod {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .hd-bod2 {
+    font-size: 13px;
+  }
+  .body-img {
+    margin-top: 1.5rem;
+    width: 250px;
+    height: 300px;
+    border-top-right-radius: 120px;
+    border-top-left-radius: 120px;
+  }
+  .hd-bodby {
+    font-weight: 600;
+    font-size: 20px;
     margin-bottom: 20px;
-}
-
-.btn {
-    display: inline-block;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #555;
-}
-
-/* Why Choose Section Styles */
-#why-choose {
-    padding: 50px 0;
-}
-
-.feature {
-    margin-bottom: 40px;
-}
-
-.feature h3 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.feature p {
-    color: #666;
-    font-size: 1rem;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+  }
+  .hd-bod3 {
+    margin: 0 auto;
+    font-size: 13px;
+    width: 20rem;
+  }
+  .body-head2 {
     text-align: center;
-}
-
-footer nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-footer nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-footer p {
-    margin-top: 10px;
-}
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+  .footer {
+    width: 800px;
+    background-color: rgb(49, 49, 219);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .hd-foot {
+    display: flex;
+    justify-content: center;
+  }
+  .foot-head {
+    font-size: 25px;
+    color: white;
+  }
+  .foot-alt {
+    color: white;
+    font-size: 14px;
+    padding: 20px;
+  }
+  .foot-btn {
+    padding: 8px 20px;
+    background: yellow;
+    font-size: 13px;
+    border: 0;
+    border-radius: 15px;
+    margin-top: 1rem;
+  }
+  .foot-int {
+    outline: 0;
+    padding: 5px 3rem;
+  }
+  
+  @media screen and (min-width: 860px) {
+    body {
+      margin: 0 7rem;
+    }
+    .head-img {
+      height: 300px;
+      width: auto;
+      border-radius: 15px;
+      margin: 1rem auto;
+    }
+    .header {
+      font-size: 25px;
+    }
+    .hd-arlt {
+      margin: 20px;
+      width: 25rem;
+      font-size: 13px;
+    }
+    .body-heading {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+    .body-alt {
+      padding: 20px;
+      text-align: center;
+      width: 17rem;
+    }
+    .body-head2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15rem;
+      margin-bottom: 2rem;
+    }
+    .foot-btn {
+      padding: 6px 15px;
+      background: yellow;
+      font-size: 12px;
+      border: 0;
+      border-radius: 15px;
+    }
+    .hd-bod3 {
+      font-size: 13px;
+      width: 20rem;
+    }
+  }
+  

@@ -19,6 +19,7 @@ mysql server to create a user for sqlalchemy
 
 Commands:
 
+CREATE DATABASE weerent;
 CREATE USER 'test'@'localhost' IDENTIFIED BY 'weerentflask200';
 GRANT ALL PRIVILEGES ON weerent.* TO 'test'@'localhost';
 
