@@ -6,7 +6,7 @@ header {
     font-weight: bold;
     margin-bottom: 15px;
     color: #fff;
-    background-color: #003049;
+    background-color: #2f7265;
 }
 
 @font-face {
@@ -71,14 +71,14 @@ main {
 
 
 footer {
-    background-color: rgb(236, 236, 236);
+    background-color: #2f7265;
     height: 40px;
     padding-top: 8px;
     text-align: center;
     bottom: 0;
     width: 100%;
     position: fixed;
-    color: #003049;
+    color: #74c343;
     font-weight: 700;
 }
 
@@ -92,13 +92,14 @@ footer {
 }
 
 .logotext {
-    color: #fff;
+    color: #74c343;
     font-weight: 800;
     text-decoration: none;
     font-size: 25px;
 }
 .logo:hover {
     padding-left: 6%;
+    color: #fff;
 }
 
 #navbarNav {
@@ -123,18 +124,18 @@ footer {
 }
 #login {
     border-radius: 5px;
-    color: #003049;
+    color: #fff;
     padding-top: 2px;
     padding-bottom: 2px ;
-    background-color: #F77F00;
+    background-color: #FD6C63;
     margin-top: 5px;
 }
 #login:hover {
     border-radius: 5px;
-    color: #003049;
+    color: #fff;
     padding-top: 2px;
     padding-bottom: 2px ;
-    background-color: #fff;
+    background-color: #FF857E;
     margin-top: 5px;
 }
 
@@ -149,11 +150,11 @@ h1 {
 }
 
 .nav-link:hover {
-    color: #F77F00;
+    color: #fff;
 }
 
 .nav-link, .navbar-brand {
-    color: #fff;
+    color: #9AD569;
 }
 
 .navbar-light .navbar-toggler-icon {
