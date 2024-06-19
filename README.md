@@ -23,3 +23,10 @@ To initialize MySQL on your machine, run this code below:
 ```
 python3 setub_db.py
 ```
+
+To initialize Gunicorn, run this code below:
+```
+gunicorn -b 0.0.0.0:5000 run:app
+```
+
+
