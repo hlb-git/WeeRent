@@ -1,18 +1,25 @@
 # WeeRent
+
+![Screenshot from 2024-05-14 05-23-39](https://github.com/hlb-git/WeeRent/assets/93451988/c8614db0-7550-4e15-ae57-0a09b0edc28e)
+
 Collaborative Portfolio Project That Aims to Solve Accommodation Problems for Corps Members
 
-Getting Started
-run ./dependencies.sh // for linux users
-run ./mac_dep.sh // for mac users
+### Getting Started
+run ``` ./dependencies.sh ``` // for linux users
 
-"""
+run ```./mac_dep.sh``` // for mac users
+
+
 In addition to the above dependencies script, please run the commands below in your
-mysql server to create a user for sqlalchemy
-"""
-Commands
+MySQL server to create a user for sqlalchemy
 
+Commands
+```
 CREATE DATABASE weerent;
 CREATE USER 'test'@'localhost' IDENTIFIED BY 'weerentflask200';
 GRANT ALL PRIVILEGES ON weerent.* TO 'test'@'localhost';
-
+```
+To initialize MySQL on your machine, run this code below:
+```
 python3 setub_db.py
+```
